@@ -1,0 +1,29 @@
+#tabla-log > thead > tr > th:nth-child(1){
+    width: 65px;
+}
+#tabla-log > thead > tr > th:nth-child(2){
+    width: 190px;
+}
+#tabla-log > thead > tr > th:nth-child(3){
+    width: 65px;
+}
+#tabla-log > thead > tr > th:nth-child(4){
+    width: 310px;
+}
+
+.listado-ip{
+    height: 66px;
+    overflow: hidden;
+    
+}
+.listado-mensaje{
+    height: 66px;
+    overflow: hidden;
+}
+.check-listado, .check-seleccionar-todo-listado{
+    width: 16px;
+    height: 16px;
+}
+#tabla-log > tbody > tr{
+    cursor: pointer;
+}
