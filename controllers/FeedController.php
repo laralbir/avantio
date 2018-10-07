@@ -38,9 +38,12 @@ class FeedController extends Controller
         $searchModel = new feedSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $feedsHoy = Feed::find()->where(['>=', 'fecha', date('Y-m-d')])->all();
+        
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'feedsHoy' => $feedsHoy
         ]);
     }
 

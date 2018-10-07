@@ -6,7 +6,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\feed */
 
-$this->title = 'Create Feed';
+$this->title = 'Crear Feed';
 $this->params['breadcrumbs'][] = ['label' => 'Feeds', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

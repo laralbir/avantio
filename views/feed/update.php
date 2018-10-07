@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\feed */
 
-$this->title = 'Update Feed: ' . $model->title;
+$this->title = 'Modificar: ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Feeds', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->title, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Modificar';
 ?>
 <div class="feed-update">
 

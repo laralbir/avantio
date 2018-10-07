@@ -12,30 +12,26 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="feed-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Modificar', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Seguro de querer eliminar el feed?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'title',
-            'body:ntext',
-            'image:ntext',
-            'source:ntext',
-            'publisher',
-            'fecha',
-        ],
-    ]) ?>
+
+    
+    <div class="content-secondary">
+        <h1><?=$model->title?></h1>
+        <h2><small>Fuente <a href="<?=$model->source?>" target="_blank">[<?=$model->publisher?>]</a></small></h2>
+        <div class="content">
+            <?=$model->body?>
+            
+        </div>
+    </div>
 
 </div>
