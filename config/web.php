@@ -17,7 +17,7 @@ $config = [
         '@npm' => '@vendor/npm-asset',
     ],
     'language' => 'es-ES',
-    'defaultRoute' => 'feeds/index',
+    'defaultRoute' => 'feed/index',
     'components' => [
         'assetManager' => [
             'bundles' => [
