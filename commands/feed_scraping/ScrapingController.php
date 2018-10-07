@@ -12,7 +12,7 @@ class ScrapingController extends Controller {
 
     public function getContentUrl() {
         $url = $this->url;
-        if (!is_null($url)) {
+        if (!emptty($url)) {
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -24,30 +24,34 @@ class ScrapingController extends Controller {
         }
     }
 
-    public function setUrl($url){
+    public function setUrl($url) {
         $this->url = $url;
     }
-    
+
     public function saveFeed($title, $body, $image, $source, $publisher) {
         $result = false;
 
-        //Aqui se hace la validacion de las variables
-        
-        
-        try {
-            $feed = new Feed();
+        if (
+                !emptty($title) && !emptty($body) &&
+                !emptty($image) && !emptty($source) &&
+                !emptty($publisher)
+        ) {
 
-            $feed->fecha = date('Y-m-d H:i:s');
-            $feed->title = $title;
-            $feed->body = $body;
-            $feed->image = $image;
-            $feed->source = $source;
-            $feed->publisher = $publisher;
+            try {
+                $feed = new Feed();
 
-            $result = $feed->save();
-        } catch (Exception $e) {
-            echo $e;
-            $result = false;
+                $feed->fecha = date('Y-m-d H:i:s');
+                $feed->title = $title;
+                $feed->body = $body;
+                $feed->image = $image;
+                $feed->source = $source;
+                $feed->publisher = $publisher;
+
+                $result = $feed->save();
+            } catch (Exception $e) {
+                echo $e;
+                $result = false;
+            }
         }
         return $result;
     }
