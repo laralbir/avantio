@@ -49,7 +49,7 @@ class ScrapingController extends Controller {
                 $feed->publisher = $publisher;
 
                 $result = $feed->save(false);
-                var_dump($result);
+                
             } catch (Exception $e) {
                 echo $e;
                 $result = false;

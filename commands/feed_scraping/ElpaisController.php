@@ -14,11 +14,12 @@ class ElpaisController extends ScrapingController {
         $elPais = $this->getContentUrl();
         $dom = HtmlDomParser::str_get_html($elPais);
         $titulo = $dom->find('article.articulo--primero div.articulo__interior h2.articulo-titulo a');
-        $imagen = $dom->find('article.articulo--primero div.articulo__interior figure.foto a img');
+        $imagen = $dom->find('div.foto--oculta figure.foto a.posicionador meta');
 
         $title = (empty($titulo[0]->innertext)) ? null : $titulo[0]->innertext;
         $source = (empty($url . $titulo[0]->href)) ? null : $url . $titulo[0]->href;
-        $image = (empty($imagen[0]->src)) ? null : 'https' . $imagen[0]->src;
+        $image = (empty($imagen[2]->content.PHP_EOL)) ? null : 'https:' . $imagen[2]->content.PHP_EOL;
+        
         $publisher = "elpais";
 
         $this->setUrl($source);
@@ -30,6 +31,7 @@ class ElpaisController extends ScrapingController {
         if ($this->saveFeed($title, $body, $image, $source, $publisher)) {
             return ExitCode::OK;
         } else {
+            echo 'Algo falló'.PHP_EOL;
             return ExitCode::DATAERR;
         }
     }
