@@ -35,14 +35,12 @@ class FeedController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new feedSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        $feedsHoy = Feed::find()->where(['>=', 'fecha', date('Y-m-d')])->all();
+        $feedsHoy = Feed::find()
+                ->where(['>=', 'fecha', date('Y-m-d')])
+                ->orderBy('fecha DESC')
+                ->all();
         
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
             'feedsHoy' => $feedsHoy
         ]);
     }
