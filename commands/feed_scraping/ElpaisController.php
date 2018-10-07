@@ -18,7 +18,7 @@ class ElpaisController extends ScrapingController {
 
         $title = (empty($titulo[0]->innertext)) ? null : $titulo[0]->innertext;
         $source = (empty($url . $titulo[0]->href)) ? null : $url . $titulo[0]->href;
-        $image = (empty($imagen[2]->content.PHP_EOL)) ? null : 'https:' . $imagen[2]->content.PHP_EOL;
+        $image = (empty($imagen[2]->content.PHP_EOL)) ? null : $imagen[2]->content.PHP_EOL;
         
         $publisher = "elpais";
 
